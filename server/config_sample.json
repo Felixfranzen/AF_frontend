@@ -1,0 +1,8 @@
+{
+  "db": {
+    "host": "localhost",
+    "user": "user",
+    "password": "pass",
+    "database": "af_frontend_challenge"
+  }
+}
