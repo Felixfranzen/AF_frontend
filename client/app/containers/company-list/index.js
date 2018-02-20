@@ -14,7 +14,12 @@ class CompanyList extends Component {
   }
 
   onSubmitClicked(e){
-    this.props.createCompany(this.state.name)
+    const trimmed = this.state.name.trim()
+    if (trimmed.length === 0){
+      return
+    }
+
+    this.props.createCompany(trimmed)
     this.setState({ name: '' })
   }
 
