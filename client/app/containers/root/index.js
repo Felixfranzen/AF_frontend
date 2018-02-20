@@ -1,9 +1,17 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-export default class Root extends Component{
+import { getCompanies } from '../../core/companies/actions'
+import { getEmployees } from '../../core/employees/actions'
+
+
+class Root extends Component{
   constructor(props){
     super(props)
+  }
+
+  componentWillMount(){
+    this.props.preloadData()
   }
 
   render(){
@@ -16,6 +24,13 @@ export default class Root extends Component{
   }
 }
 
-Root.propTypes = {
-  children: PropTypes.node
+const mapDispatchToProps = (dispatch) => {
+  return {
+    preloadData: () => {
+      dispatch(getCompanies())
+      dispatch(getEmployees())
+    }
+  }
 }
+
+export default connect(null, mapDispatchToProps)(Root)

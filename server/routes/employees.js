@@ -78,9 +78,9 @@ module.exports = (express) => {
     }
 
     res.status(200).json({
-      id: userId,
+      id: parseInt(userId),
       name,
-      company_id
+      company_id: parseInt(company_id)
     });
 
 

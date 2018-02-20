@@ -1,12 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
-import { getCompanies, createCompany } from '../../core/companies/actions'
+
+import { createCompany } from '../../core/companies/actions'
+import CompanyAccordion from '../company-accordion/index'
 
 class CompanyList extends Component {
 
-  componentWillMount(){
-    this.props.getCompanies()
+  constructor(){
+    super()
+    this.state = {
+      name: ''
+    }
+  }
+
+  onSubmitClicked(e){
+    this.props.createCompany(this.state.name)
+    this.setState({ name: '' })
   }
 
   renderCompanies(){
@@ -15,28 +24,31 @@ class CompanyList extends Component {
     }
 
     return this.props.companies.map((company) => {
-      return (<div key={company.id}>
-        <span>{company.name}</span><Link to={`/companies/${company.id}`}>SHOW</Link>
-      </div>)
+      const emp = this.props.employees.filter((e) => e.company_id === company.id)
+      return <CompanyAccordion key={company.id} company={company} employees={emp} />
     })
   }
 
   render(){
     return (<section>
+      <form onSubmit={(e) => e.preventDefault() }>
+        <input type="text" value={this.state.name} onChange={(e) => { this.setState({ name: e.currentTarget.value })}}/>
+        <button type="submit" onClick={(e) => this.onSubmitClicked(e)}>Create company</button>
+      </form>
       {this.renderCompanies()}
     </section>)
   }
 }
 
-const mapStateToProps = ({ companies }) => {
+const mapStateToProps = ({ companies, employees }) => {
   return {
-    companies
+    companies,
+    employees
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCompanies: () => {  dispatch(getCompanies()) },
     createCompany: (name) => { dispatch(createCompany(name)) }
   }
 }
