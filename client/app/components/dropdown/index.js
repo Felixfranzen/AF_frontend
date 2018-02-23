@@ -1,6 +1,6 @@
 import React from 'react'
 
-const drop = ({ items, onSelect }) => {
+const drop = ({ value, items, onSelect }) => {
 
 
   const onChange = (e) => {
@@ -9,6 +9,7 @@ const drop = ({ items, onSelect }) => {
 
   return (
     <select onChange={onChange}>
+      <option value="">Select company</option>
       {items.map((item) => {
         return <option value={item.value} key={item.value}>{item.name}</option>
       })}

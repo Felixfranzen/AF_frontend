@@ -16,7 +16,11 @@ module.exports = (express) => {
       return;
     }
 
-    res.status(200).json({ insert_id: fields.insertId });
+    res.status(200).json({
+      id: fields.insertId,
+      name,
+      company_id: parseInt(company_id)
+    });
 
   });
 

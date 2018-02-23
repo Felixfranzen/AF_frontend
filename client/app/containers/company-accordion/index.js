@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateEmployee } from '../../core/employees/actions'
 
-class Accordion extends Component {
+class CompanyAccordion extends Component {
 
   constructor(){
     super()
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Accordion)
+export default connect(null, mapDispatchToProps)(CompanyAccordion)
