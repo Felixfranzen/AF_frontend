@@ -5,11 +5,14 @@ import CompanyList from '../company-list/index'
 export default class MainApp extends Component{
   render(){
     return (
-      <div>
-        <EmployeeList />
-        <hr></hr>
-        <CompanyList />
-      </div>
+      <section className="root-container">
+        <div className="content">
+          <CompanyList />
+        </div>
+        <div className="content">
+          <EmployeeList />
+        </div>
+      </section>
     )
   }
 }

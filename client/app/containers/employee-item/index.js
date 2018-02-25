@@ -5,9 +5,16 @@ import { updateEmployee } from '../../core/employees/actions'
 class EmployeeItem extends Component {
   render(){
     return (
-      <div>
-        {this.props.employee.name}
-        <button onClick={() => {this.props.assignEmployee(this.props.employee, null)}}>Assign</button>
+      <div className="table-item">
+        <div className="employee-list padded">
+          <div className="employee-item">
+            <p>{this.props.employee.name}
+              <span className="clickable" onClick={() => {this.props.assignEmployee(this.props.employee, null)}}>
+                <b>Assign</b>
+              </span>
+            </p>
+          </div>
+        </div>
       </div>
     )
   }

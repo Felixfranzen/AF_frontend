@@ -24,10 +24,6 @@ class CompanyList extends Component {
   }
 
   renderCompanies(){
-    if (!this.props.companies) {
-      return <div>No companies yet</div>
-    }
-
     return this.props.companies.map((company) => {
       const emp = this.props.employees.filter((e) => e.company_id === company.id)
       return <CompanyAccordion key={company.id} company={company} employees={emp} />
@@ -36,9 +32,15 @@ class CompanyList extends Component {
 
   render(){
     return (<section>
-      <form onSubmit={(e) => e.preventDefault() }>
-        <input type="text" value={this.state.name} onChange={(e) => { this.setState({ name: e.currentTarget.value })}}/>
-        <button type="submit" onClick={(e) => this.onSubmitClicked(e)}>Create company</button>
+      <div className="content-header">
+        <h2>Companies</h2>
+      </div>
+      <form className="content-form" onSubmit={(e) => e.preventDefault() }>
+        <h5 className="faded light">NEW COMPANY</h5>
+        <input type="text" placeholder="Name" value={this.state.name} onChange={(e) => { this.setState({ name: e.currentTarget.value })}}/>
+        <div>
+          <button type="submit" onClick={(e) => this.onSubmitClicked(e)}>ADD</button>
+        </div>
       </form>
       {this.renderCompanies()}
     </section>)

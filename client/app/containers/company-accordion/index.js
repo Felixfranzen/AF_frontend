@@ -20,23 +20,38 @@ class CompanyAccordion extends Component {
       return
     }
 
+    let content = null
+
     if (this.props.employees.length === 0){
-      return <div>No employees</div>
+      content = (
+        <div className="employee-item">
+          <p>No employees</p>
+        </div>
+      )
+    } else {
+      content = this.props.employees.map((employee) => {
+        return (
+          <div className="employee-item" key={employee.id}><p>{employee.name}<span className="clickable" onClick={() => this.clearEmployee(employee) }>X</span></p></div>
+        )
+      })
     }
 
-    return this.props.employees.map((employee) => {
-      return <div key={employee.id}>{employee.name} <button onClick={() => this.clearEmployee(employee) }>Remove</button></div>
-    })
+    return (
+      <div className="employee-list">
+        { content }
+      </div>
+    )
   }
 
   render(){
-    return <div>
-      <hr/>
-      <div>
-        <b>{this.props.company.name}</b><button onClick={() => this.setState({ open: !this.state.open })}>V</button>
+    return (
+      <div className="table-item">
+        <div className="header clickable" onClick={() => this.setState({ open: !this.state.open })}>
+          <b>{this.props.company.name}</b><span className={this.state.open ? 'open caret' : 'caret'}>V</span>
+        </div>
+        {this.renderEmployees()}
       </div>
-      {this.renderEmployees()}
-    </div>
+    )
   }
 }
 

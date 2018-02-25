@@ -45,10 +45,16 @@ class EmployeeList extends Component {
 
   render(){
     return (<section>
-      <form onSubmit={(e) => e.preventDefault() }>
-        <input type="text" value={this.state.name} onChange={(e) => { this.setState({ name: e.currentTarget.value })}}/>
+      <div className="content-header">
+        <h2>Employees</h2>
+      </div>
+      <form className="content-form" onSubmit={(e) => e.preventDefault() }>
+        <h5 className="faded light">NEW EMPLOYEE</h5>
+        <input placeholder="Name" type="text" value={this.state.name} onChange={(e) => { this.setState({ name: e.currentTarget.value })}}/>
         <Dropdown items={this.setCompanyDropdown()} onSelect={(id) => { this.setState({company: id}) }}/>
-        <button type="submit" onClick={(e) => this.onSubmitClicked(e)}>Create company</button>
+        <div>
+          <button type="submit" onClick={(e) => this.onSubmitClicked(e)}>ADD</button>
+        </div>
       </form>
       {this.renderEmployees()}
     </section>)

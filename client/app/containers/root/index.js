@@ -16,10 +16,9 @@ class Root extends Component{
 
   render(){
     return (
-      <div className="root-container">
-        <h1>React/Redux starter project</h1>
+      <section>
         { this.props.children }
-      </div>
+      </section>
     )
   }
 }

@@ -6,7 +6,7 @@ export function getCompanies(){
     axios.get(`${API_URL}/companies`).then((result) => {
       dispatch({
         type: GET_COMPANIES,
-        payload: result.data
+        payload: result.data || []
       })
     })
   }

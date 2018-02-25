@@ -6,7 +6,7 @@ export function getEmployees(){
     axios.get(`${API_URL}/employees`).then((result) => {
       dispatch({
         type: GET_EMPLOYEES,
-        payload: result.data
+        payload: result.data || []
       })
     })
   }

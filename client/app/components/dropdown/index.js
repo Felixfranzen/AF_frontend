@@ -8,7 +8,7 @@ const drop = ({ value, items, onSelect }) => {
   }
 
   return (
-    <select onChange={onChange}>
+    <select className="styled" onChange={onChange}>
       <option value="">Select company</option>
       {items.map((item) => {
         return <option value={item.value} key={item.value}>{item.name}</option>
