@@ -1,6 +1,6 @@
 import React from 'react'
 
-const drop = ({ value, items, onSelect }) => {
+const drop = ({ items, onSelect }) => {
 
 
   const onChange = (e) => {

@@ -57,7 +57,7 @@ button {
   outline: none;
   padding: 8px 14px;
   border-radius: 3px;
-  background-color: #333;
+  background-color: #111;
   color: #fff;
   border: 0;
   font-weight: bold;
@@ -85,9 +85,6 @@ button {
 .content-header {
   background: $primary-accent;
   padding: 20px 30px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.05);
-  position: relative;
-  z-index: 2;
 
   h2 {
     padding: 0;
@@ -97,8 +94,6 @@ button {
 }
 
 .content-form {
-  position: relative;
-  z-index: 1;
   background-color: $primary-accent-dark;
   padding: 20px 30px;
 
@@ -145,6 +140,18 @@ button {
 
 .table-item:nth-child(odd) {
   background: #fafafa;
+}
+
+.button-group {
+  margin-top: 10px;
+
+  button {
+    margin-left: 5px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
 }
 
 
